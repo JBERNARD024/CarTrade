@@ -27,6 +27,9 @@
         <activity
             android:name=".SignIn"
             android:label="SignInActivity"></activity>
+        <activity
+            android:name=".CarActivity"
+            android:label="CarActivity"></activity>
     </application>
 
 </manifest>

@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
@@ -13,9 +16,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Configurar a barra de ação (ou Toolbar)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        // Obtenha as referências dos elementos no contêiner
+        val itemImage: ImageView = findViewById(R.id.itemImage)
+        val itemTitle: TextView = findViewById(R.id.itemTitle)
+        val itemPrice: TextView = findViewById(R.id.itemPrice)
+
+        // Substitua os valores de exemplo pelos seus dados reais
+        itemImage.setImageResource(R.drawable.carro)
+        itemTitle.text = "Audi R8 Coupé 5.2 FSI V10 quattro R tronic"
+        itemPrice.text = "77 500 €"
+
+        setupToolbar()
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -43,4 +56,11 @@ class MainActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
+    private fun setupToolbar() {
+        // Configurar a barra de ação (ou Toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+    }
+
 }
