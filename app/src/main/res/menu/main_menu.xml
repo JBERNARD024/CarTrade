@@ -2,16 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_login"
-        android:title="Login"
-        app:showAsAction="never"
-    />
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home"/>
 
-    <item
-        android:id="@+id/action_registar"
-        android:title="Registar"
-        app:showAsAction="never"
-    />
+        <item android:id="@+id/favorite"
+            android:icon="@drawable/ic_baseline_favorite_border_24"
+            android:title="Home"/>
+
+        <item android:id="@+id/info"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="Info"/>
+
+    </group>
 
 </menu>
