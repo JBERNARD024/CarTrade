@@ -1,20 +1,14 @@
-package pt.ipt.dam2023.cartrade
+package pt.ipt.dam2023.cartrade.ui.activity
 
 import android.content.Intent
-import android.net.http.HeaderBlock
 import android.os.Bundle
-import android.text.Layout
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import pt.ipt.dam2023.cartrade.R
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,28 +27,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
         val headerView = navigationView.getHeaderView(0)
 
-        headerView.setOnClickListener { val intent = Intent(this, Login::class.java)
-            startActivity(intent) }
+        headerView.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
 
 
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.open_nav,
+            R.string.close_nav
+        )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             navigationView.setCheckedItem(R.id.nav_view)
         }
 
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.favorite -> {
                 val intent = Intent(this, Favorites::class.java)
                 startActivity(intent)
                 return true
             }
-            R.id.info -> {val intent = Intent(this, Favorites::class.java)
+
+            R.id.info -> {
+                val intent = Intent(this, Favorites::class.java)
                 startActivity(intent)
                 return true
             }
