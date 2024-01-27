@@ -87,7 +87,7 @@ class Registar : AppCompatActivity(){
 
     private fun getListUsersSize(): Int {
         var size = 0
-        val call = Retrofit().getService().list()
+        val call = Retrofit().getService().list_Users()
         call.enqueue(object : Callback<List<User>?> {
             override fun onResponse(call: Call<List<User>?>?,
                                     response: Response<List<User>?>?) {

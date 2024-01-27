@@ -12,7 +12,7 @@
         android:text="Add Random User" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/user_list_recyclerview"
+        android:id="@+id/car_list_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

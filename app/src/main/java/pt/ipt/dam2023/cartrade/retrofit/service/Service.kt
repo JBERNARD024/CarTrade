@@ -2,6 +2,7 @@ package pt.ipt.dam2023.cartrade.retrofit.service
 
 import pt.ipt.dam2023.cartrade.model.APIResult
 import pt.ipt.dam2023.cartrade.model.AuthenticationResponse
+import pt.ipt.dam2023.cartrade.model.Car
 import pt.ipt.dam2023.cartrade.model.User
 import retrofit2.Call
 import retrofit2.http.Field
@@ -10,9 +11,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Service {
-
+    /******************************************************U S E R S*****************************************************************/
     @GET("getUsers/")
-    fun list():Call<List<User>>
+    fun list_Users():Call<List<User>>
 
     @FormUrlEncoded
     @POST("addUser/")
@@ -22,4 +23,7 @@ interface Service {
     @FormUrlEncoded
     @POST("authentication/")
     fun authentication(@Field("email") email: String?, @Field("password") password: String?): Call<AuthenticationResponse>
+
+    @GET("getCars/")
+    fun list_Cars(): Call<List<Car>>
 }

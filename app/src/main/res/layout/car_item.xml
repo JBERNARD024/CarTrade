@@ -12,29 +12,29 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/user_item_nome"
+            android:id="@+id/fotoPrincipal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            tools:text="Nome" />
+            tools:text="fotoPrincipal" />
 
         <TextView
-            android:id="@+id/user_item_apelido"
+            android:id="@+id/marcaModeloVersao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            tools:text="Apelido" />
+            tools:text="MarcaModeloVersao" />
         <TextView
-            android:id="@+id/user_item_email"
+            android:id="@+id/infos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            tools:text="Email" />
+            tools:text="Infos" />
         <TextView
-            android:id="@+id/user_item_password"
+            android:id="@+id/preco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            tools:text="Password" />
+            tools:text="Preço" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
