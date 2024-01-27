@@ -1,6 +1,5 @@
 package pt.ipt.dam2023.cartrade.ui.activity
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -34,6 +33,7 @@ class Registar : AppCompatActivity(){
     private lateinit var passwordTil: TextInputLayout
     private lateinit var confPasswordTil: TextInputLayout
     private lateinit var btnCriarConta: Button
+    private lateinit var backToLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,15 +49,19 @@ class Registar : AppCompatActivity(){
         emailTil = findViewById(R.id.txtInputEmail)
         passwordTil = findViewById(R.id.txtInputPassword)
         confPasswordTil = findViewById(R.id.txtInputConfPassword)
+        backToLogin = findViewById(R.id.backToLogin)
 
         getListUsersSize()
+
+        backToLogin.setOnClickListener {
+           super.onBackPressedDispatcher.onBackPressed()
+        }
 
         btnCriarConta.setOnClickListener {
             val nome = nomeTxt.text.toString()
             val apelido = apelidoTxt.text.toString()
             val email = emailTxt.text.toString()
             val password = passwordTxt.text.toString()
-            val confPassword = confPasswordTxt.text.toString()
 
             if(verificaCampos()){
                 val id = getListUsersSize()+1
