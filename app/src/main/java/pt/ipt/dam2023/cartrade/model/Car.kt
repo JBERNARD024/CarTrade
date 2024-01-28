@@ -1,7 +1,5 @@
 package pt.ipt.dam2023.cartrade.model
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class Car(
@@ -20,5 +18,14 @@ data class Car(
     @SerializedName("numPortas") val numPortas: Int?,
     @SerializedName("lotacao") val lotacao: Int?,
     @SerializedName("condicao") val condicao: String?,
-    @SerializedName("preco") val preco: Int?
+    @SerializedName("preco") val preco: Int?,
+    @SerializedName("user") val user: String?
+)
+
+class CarPhotosResponse (
+    @SerializedName("photos") val photos: List<String>?
+)
+
+class CarResponse(
+    @SerializedName("id") val id: Int
 )

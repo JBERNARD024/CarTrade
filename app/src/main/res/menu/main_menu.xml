@@ -17,6 +17,24 @@
             android:icon="@drawable/ic_baseline_info_24"
             android:title="Info" />
 
+        <item
+            android:id="@+id/logout"
+            android:visible="false"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
+
+        <item
+            android:id="@+id/addCar"
+            android:visible="false"
+            android:icon="@drawable/car"
+            android:title="Adicionar Carro" />
+
+        <item
+            android:id="@+id/myAds"
+            android:visible="false"
+            android:icon="@drawable/baseline_ads_click_24"
+            android:title="Os Meus Anúncios" />
+
     </group>
 
 </menu>

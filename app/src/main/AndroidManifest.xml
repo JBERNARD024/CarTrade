@@ -10,9 +10,9 @@
         android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/slogan"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/slogan_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarTrade"
         tools:targetApi="31">
@@ -34,6 +34,23 @@
         <activity
             android:name=".ui.activity.Favorites"
             android:label="FavoritesActivity"></activity>
-    </application>
 
+        <activity
+            android:name=".ui.activity.CarDetails"
+            android:label="CarDetailsActivity"></activity>
+
+        <activity
+            android:name=".ui.activity.Perfil"
+            android:label="PerfilActivity"></activity>
+
+        <activity
+            android:name=".ui.activity.AddCar"
+            android:label="AddCarActivity"></activity>
+        <activity
+            android:name=".ui.activity.EditCar"
+            android:label="EditCarActivity"></activity>
+        <activity
+            android:name=".ui.activity.AdsCar"
+            android:label="AdsCarActivity"></activity>
+    </application>
 </manifest>
