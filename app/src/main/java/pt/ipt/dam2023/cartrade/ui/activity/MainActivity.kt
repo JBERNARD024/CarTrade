@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.navigation.NavigationView
 import pt.ipt.dam2023.cartrade.R
 import pt.ipt.dam2023.cartrade.model.Car
+import pt.ipt.dam2023.cartrade.model.CarPhotosResponse
 import pt.ipt.dam2023.cartrade.retrofit.Retrofit
 import pt.ipt.dam2023.cartrade.ui.adapter.CarListAdapter
 import retrofit2.Call
@@ -24,17 +25,17 @@ private var sizeCars: Int = 0
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        listCars()
-
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout);
-
+        recyclerView = findViewById(R.id.car_list_recyclerview)
+        listCars()
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
 
 
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (savedInstanceState == null) {
             navigationView.setCheckedItem(R.id.nav_view)
         }
+
 
     }
 
@@ -101,7 +103,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun configureList(cars: List<Car>) {
-        val recyclerView: RecyclerView = findViewById(R.id.car_list_recyclerview)
         recyclerView.adapter = CarListAdapter(cars, this)
         val layoutManager = StaggeredGridLayoutManager( 1, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager

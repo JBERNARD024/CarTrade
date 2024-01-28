@@ -3,12 +3,15 @@ package pt.ipt.dam2023.cartrade.retrofit.service
 import pt.ipt.dam2023.cartrade.model.APIResult
 import pt.ipt.dam2023.cartrade.model.AuthenticationResponse
 import pt.ipt.dam2023.cartrade.model.Car
+import pt.ipt.dam2023.cartrade.model.CarPhotosResponse
 import pt.ipt.dam2023.cartrade.model.User
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
+
 
 interface Service {
     /******************************************************U S E R S*****************************************************************/
@@ -26,4 +29,10 @@ interface Service {
 
     @GET("getCars/")
     fun list_Cars(): Call<List<Car>>
+
+    @GET("getCars/{id}/")
+    fun getCar(@Path("id") id: Int): Call<Car>
+
+    @GET("getCars/{id}/photos/")
+    fun getCarPhotos(@Path("id") id: Int): Call<CarPhotosResponse?>?
 }
