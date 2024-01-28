@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.info -> {
-                val intent = Intent(this, Favorites::class.java)
+                val intent = Intent(this, Info::class.java)
                 startActivity(intent)
                 return true
             }
