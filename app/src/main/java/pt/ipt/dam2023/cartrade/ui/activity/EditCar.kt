@@ -1,7 +1,6 @@
 package pt.ipt.dam2023.cartrade.ui.activity
 
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
@@ -94,22 +93,6 @@ class EditCar: AppCompatActivity() {
 
         val carId = intent.getIntExtra("carId",-1)
         listCars(carId)
-
-        marcaTxt.text = (car.marca?.toString() ?: "") as Editable?
-        /*modeloTxt.setText(car.modelo)
-        versaoTxt.setText(car.versao)
-        combustivelTxt.setText(car.combustivel)
-        car.ano?.let { anoTxt.setText(it) }
-        car.kms?.let { kmsTxt.setText(it) }
-        car.potencia?.let { potenciaTxt.setText(it) }
-        car.cilindrada?.let { cilindradaTxt.setText(it) }
-        corTxt.setText(car.cor)
-        tipoCaixaTxt.setText(car.tipoCaixa)
-        car.numMudancas?.let { numMudancasTxt.setText(it) }
-        car.numMudancas?.let { numPortasTxt.setText(it) }
-        car.lotacao?.let { lotacaoTxt.setText(it) }
-        condicaoTxt.setText(car.condicao)
-        car.preco?.let { precoTxt.setText(it) }*/
 
         btnAdicionarCarro.setOnClickListener {
             val marca = marcaTxt.text.toString()
