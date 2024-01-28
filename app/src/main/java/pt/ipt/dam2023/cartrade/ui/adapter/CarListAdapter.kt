@@ -19,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CarListAdapter(private val cars: List<Car>, private val context: Context) :
+class CarListAdapter(private val cars: List<Car>, private val email:String?, private val context: Context) :
     RecyclerView.Adapter<CarListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,6 +28,7 @@ class CarListAdapter(private val cars: List<Car>, private val context: Context) 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, CarDetails::class.java)
             intent.putExtra("carId", car.id)
+            intent.putExtra("email", email)
             context.startActivity(intent)
         }
     }

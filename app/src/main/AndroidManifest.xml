@@ -42,5 +42,15 @@
         <activity
             android:name=".ui.activity.Perfil"
             android:label="PerfilActivity"></activity>
+
+        <activity
+            android:name=".ui.activity.AddCar"
+            android:label="AddCarActivity"></activity>
+        <activity
+            android:name=".ui.activity.EditCar"
+            android:label="EditCarActivity"></activity>
+        <activity
+            android:name=".ui.activity.AdsCar"
+            android:label="AdsCarActivity"></activity>
     </application>
 </manifest>

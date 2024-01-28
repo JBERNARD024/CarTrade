@@ -1,15 +1,22 @@
 package pt.ipt.dam2023.cartrade.ui.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import pt.ipt.dam2023.cartrade.R
+import pt.ipt.dam2023.cartrade.model.APIResult
 import pt.ipt.dam2023.cartrade.model.Car
 import pt.ipt.dam2023.cartrade.model.CarPhotosResponse
 import pt.ipt.dam2023.cartrade.model.CarResponse
+import pt.ipt.dam2023.cartrade.model.User
 import pt.ipt.dam2023.cartrade.retrofit.Retrofit
 import pt.ipt.dam2023.cartrade.ui.adapter.CarDetailsAdapter
 import retrofit2.Call
@@ -34,6 +41,8 @@ class CarDetails : AppCompatActivity() {
     private lateinit var txtNumMudancas: TextView
     private lateinit var txtNumPortas: TextView
     private lateinit var txtCondicao: TextView
+    private lateinit var btnEditar: Button
+    private lateinit var btnEliminar: Button
     private lateinit var car: Car
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +50,7 @@ class CarDetails : AppCompatActivity() {
         setContentView(R.layout.activity_car_details)
 
         val carId = intent.getIntExtra("carId", -1)
+        val email = intent.getStringExtra("email")
         txtAno = findViewById(R.id.ano)
         txtKms = findViewById(R.id.quilometros)
         txtPot = findViewById(R.id.potencia)
@@ -55,13 +65,45 @@ class CarDetails : AppCompatActivity() {
         txtNumMudancas = findViewById(R.id.numMudancas)
         txtNumPortas = findViewById(R.id.numPortas)
         txtCondicao = findViewById(R.id.condicao)
+        btnEditar = findViewById(R.id.btnEditar)
+        btnEliminar = findViewById(R.id.btnEliminar)
         getCar(carId)
         getListFotos(carId)
 
         photosRecyclerView = findViewById(R.id.photosRecyclerView)
         photosRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        CarDetailsAdapter = CarDetailsAdapter(emptyList()) // Initialize with an empty list
+        CarDetailsAdapter = CarDetailsAdapter(emptyList())
         photosRecyclerView.adapter = CarDetailsAdapter
+
+        btnEditar.setOnClickListener {
+            val intent = Intent(this, EditCar::class.java)
+            intent.putExtra("carId", carId)
+            startActivity(intent)
+        }
+
+        btnEliminar.setOnClickListener {
+            eliminarCarro(car.id, this)
+            val intent = Intent(this, AdsCar::class.java)
+            startActivity(intent)
+        }
+
+    }
+
+    private fun eliminarCarro(id: Int, context: Context) {
+        val call = Retrofit().getService().deletedCar(id)
+        call!!.enqueue(object : Callback<APIResult> {
+            override fun onResponse(call: Call<APIResult>?,
+                                    response: Response<APIResult>?) {
+                response?.body()?.let {
+                    Log.e("onResponse", it.toString())
+                    Toast.makeText(context,"Carro eliminado com sucesso", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<APIResult>?, t: Throwable?) {
+                t?.message?.let { Log.e("onFailure", it) }
+            }
+        })
     }
 
     private fun getListFotos(id: Int) {

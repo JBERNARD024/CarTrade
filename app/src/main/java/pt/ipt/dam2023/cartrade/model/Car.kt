@@ -18,7 +18,8 @@ data class Car(
     @SerializedName("numPortas") val numPortas: Int?,
     @SerializedName("lotacao") val lotacao: Int?,
     @SerializedName("condicao") val condicao: String?,
-    @SerializedName("preco") val preco: Int?
+    @SerializedName("preco") val preco: Int?,
+    @SerializedName("user") val user: String?
 )
 
 class CarPhotosResponse (

@@ -67,8 +67,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, Login::class.java)
                 startActivity(intent)
             }else{
-                val intent = Intent(this, Perfil::class.java)
-                startActivity(intent)
+                if (user != null) {
+                    val intent = Intent(this, Perfil::class.java)
+                    intent.putExtra("Id", user.id)
+                    startActivity(intent)
+                }
             }
         }
 
@@ -102,7 +105,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun showLogoutOption(id: Int, callback: () -> Unit) {
         val menuNavigation = navigationView.menu
         val logoutItem = menuNavigation.findItem(R.id.logout)
+        val addCarItem = menuNavigation.findItem(R.id.addCar)
+        val myAds = menuNavigation.findItem(R.id.myAds)
         logoutItem.isVisible = true
+        addCarItem.isVisible = true
+        myAds.isVisible = true
+
         getListUsersSize(id) {
             callback.invoke()
         }
@@ -126,6 +134,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 isLoggedIn = false
                 Toast.makeText(this, "Adeus, ${user.nome} ${user.apelido}", Toast.LENGTH_LONG).show()
                 handleLogout()
+                return true
+            }
+
+            R.id.addCar -> {
+                val intent = Intent(this, AddCar::class.java)
+                intent.putExtra("email", user.email)
+                startActivity(intent)
+                return true
+            }
+
+            R.id.myAds -> {
+                val intent = Intent(this, AdsCar::class.java)
+                intent.putExtra("email", user.email)
+                startActivity(intent)
                 return true
             }
 
@@ -178,7 +200,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun configureList(cars: List<Car>) {
-        recyclerView.adapter = CarListAdapter(cars, this)
+        if(isLoggedIn){
+            recyclerView.adapter = CarListAdapter(cars, user.email, this)
+        }else{
+            recyclerView.adapter = CarListAdapter(cars ,"",this)
+        }
         val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager
     }

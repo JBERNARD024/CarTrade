@@ -384,5 +384,32 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#ADD8E6"
+                android:text="Editar"
+                android:layout_marginTop="16dp"
+                android:onClick="onEditarButtonClick" />
+
+            <Button
+                android:id="@+id/btnEliminar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#ADD8E6"
+                android:text="Eliminar"
+                android:layout_marginTop="16dp"
+                android:onClick="onEliminarButtonClick" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
