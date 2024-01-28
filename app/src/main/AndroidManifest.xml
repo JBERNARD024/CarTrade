@@ -37,6 +37,10 @@
 
         <activity
             android:name=".ui.activity.CarDetails"
-            android:label="FavoritesActivity"></activity>
+            android:label="CarDetailsActivity"></activity>
+
+        <activity
+            android:name=".ui.activity.Perfil"
+            android:label="PerfilActivity"></activity>
     </application>
 </manifest>

@@ -59,6 +59,8 @@ class Login : AppCompatActivity() {
                             passwordTil.isErrorEnabled = false
                             Toast.makeText(this, "Bem-vindo, ${result.nome} ${result.apelido}", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, MainActivity::class.java)
+                            intent.putExtra("Login", true)
+                            intent.putExtra("Id", result.id)
                             startActivity(intent)
                         }else if(result.code == 401){
                             passwordTil.isErrorEnabled = true
