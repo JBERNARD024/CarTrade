@@ -43,6 +43,7 @@ class CarDetails : AppCompatActivity() {
     private lateinit var txtCondicao: TextView
     private lateinit var btnEditar: Button
     private lateinit var btnEliminar: Button
+    private lateinit var btnBackTo: Button
     private lateinit var car: Car
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +68,7 @@ class CarDetails : AppCompatActivity() {
         txtCondicao = findViewById(R.id.condicao)
         btnEditar = findViewById(R.id.btnEditar)
         btnEliminar = findViewById(R.id.btnEliminar)
+        btnBackTo = findViewById(R.id.backTo)
         getCar(carId)
         getListFotos(carId)
 
@@ -85,6 +87,10 @@ class CarDetails : AppCompatActivity() {
             eliminarCarro(car.id, this)
             val intent = Intent(this, AdsCar::class.java)
             startActivity(intent)
+        }
+
+        btnBackTo.setOnClickListener {
+            super.onBackPressedDispatcher.onBackPressed()
         }
 
     }

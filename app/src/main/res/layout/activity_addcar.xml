@@ -21,22 +21,22 @@
             android:padding="8dp">
 
             <Button
-                android:id="@+id/backToLogin"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:rotationY="180"
-                android:clickable="true"
+                android:id="@+id/backToHome"
+                android:layout_width="25dp"
+                android:layout_height="31dp"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/baseline_arrow_forward_24"
-                android:layout_gravity="center_vertical"/>
+                android:clickable="true"
+                android:rotationY="180" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="340dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Adicionar Carro"
-                android:textSize="24dp"
                 android:textColor="@android:color/holo_blue_light"
-                android:layout_gravity="center" />
+                android:textSize="24dp" />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
