@@ -1,5 +1,6 @@
 package pt.ipt.dam2023.cartrade.ui.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -10,7 +11,6 @@ import com.google.android.material.textfield.TextInputLayout
 import pt.ipt.dam2023.cartrade.R
 import pt.ipt.dam2023.cartrade.model.APIResult
 import pt.ipt.dam2023.cartrade.model.Car
-import pt.ipt.dam2023.cartrade.model.User
 import pt.ipt.dam2023.cartrade.retrofit.Retrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -50,9 +50,11 @@ class EditCar: AppCompatActivity() {
     private lateinit var condicaoTil: TextInputLayout
     private lateinit var precoTil: TextInputLayout
     private lateinit var btnAdicionarCarro: Button
+    private lateinit var btnBackTo: Button
     private lateinit var cars: List<Car>
     private lateinit var car: Car
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editcar)
@@ -73,6 +75,7 @@ class EditCar: AppCompatActivity() {
         lotacaoTxt = findViewById(R.id.txtLotacao)
         condicaoTxt = findViewById(R.id.txtCondicao)
         precoTxt = findViewById(R.id.txtPreco)
+        btnBackTo = findViewById(R.id.backToMain)
 
         marcaTil = findViewById(R.id.txtInputMarca)
         modeloTil = findViewById(R.id.txtInputModelo)
@@ -93,6 +96,13 @@ class EditCar: AppCompatActivity() {
 
         val carId = intent.getIntExtra("carId",-1)
         listCars(carId)
+
+        btnBackTo.setOnClickListener {
+            super.onBackPressedDispatcher.onBackPressed()
+        }
+
+        Log.d("Marca", car.marca!!)
+        //marcaTxt.setText(car.marca.toString())
 
         btnAdicionarCarro.setOnClickListener {
             val marca = marcaTxt.text.toString()

@@ -20,7 +20,7 @@
             android:padding="8dp">
 
             <Button
-                android:id="@+id/backToLogin"
+                android:id="@+id/backTo"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:rotationY="180"

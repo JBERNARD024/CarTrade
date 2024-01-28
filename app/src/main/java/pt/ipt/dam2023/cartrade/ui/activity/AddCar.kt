@@ -52,6 +52,7 @@ class AddCar: AppCompatActivity() {
     private lateinit var condicaoTil: TextInputLayout
     private lateinit var precoTil: TextInputLayout
     private lateinit var btnAdicionarCarro: Button
+    private lateinit var btnBackTo: Button
     private lateinit var cars: List<Car>
     private lateinit var email: String
 
@@ -94,6 +95,7 @@ class AddCar: AppCompatActivity() {
         condicaoTil = findViewById(R.id.txtInputCondicao)
         precoTil = findViewById(R.id.txtInputPreco)
         btnAdicionarCarro = findViewById(R.id.btnRegistarCar)
+        btnBackTo = findViewById(R.id.backToHome)
         listCars()
         btnAdicionarCarro.setOnClickListener {
             val marca = marcaTxt.text.toString()
@@ -120,6 +122,10 @@ class AddCar: AppCompatActivity() {
             }else{
                 Toast.makeText(this,"Campos não preenchidos", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btnBackTo.setOnClickListener {
+            super.onBackPressedDispatcher.onBackPressed()
         }
 
     }

@@ -1,5 +1,6 @@
 package pt.ipt.dam2023.cartrade.ui.activity
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -68,6 +69,8 @@ class Registar : AppCompatActivity(){
                 val user = User(id,nome, apelido, email, password)
                 addUser(user) {
                     Toast.makeText(this,"Registo bem sucedido",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, Login::class.java)
+                    startActivity(intent)
                 }
             }
         }

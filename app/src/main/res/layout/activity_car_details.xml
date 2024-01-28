@@ -12,6 +12,31 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/backTo"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:rotationY="180"
+                android:clickable="true"
+                android:background="@drawable/baseline_arrow_forward_24"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Detalhes do Carro"
+                android:textSize="24dp"
+                android:textColor="@android:color/holo_blue_light"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photosRecyclerView"
             android:layout_width="match_parent"

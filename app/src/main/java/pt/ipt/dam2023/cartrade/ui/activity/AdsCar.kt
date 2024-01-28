@@ -2,6 +2,7 @@ package pt.ipt.dam2023.cartrade.ui.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -14,14 +15,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 private lateinit var recyclerView: RecyclerView
+private lateinit var btnBackTo: Button
 
 class AdsCar: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ads)
         recyclerView = findViewById(R.id.car_list_recyclerview)
+        btnBackTo = findViewById(R.id.backTo)
         val email = intent.getStringExtra("email")
         listCars(email)
+
+        btnBackTo.setOnClickListener {
+            super.onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun listCars(email: String?) {
